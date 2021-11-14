@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load markdown_extras %}
+
+{% block content %}
+
+
+<h1>Post</h1>
+
+<body>
+  <ur>
+    {% for post in object_list %}
+      <li><a href="{% url 'article-detail' post.pk%}">{{post.title}}</a> 
+        <!-- - {{post.author.first_name}}
+      {{post.author.last_name}} - {{post.author.email}} --> 
+      <br>
+      <small>{{post.content | markdown |slice:":200"|safe}}</small>
+      </li>
+    {% endfor%}
+
+         
+  </ur>
+</body>
+
+{% endblock %}

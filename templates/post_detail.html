@@ -1,0 +1,49 @@
+{% extends 'post.html' %}
+{% load markdown_extras %}
+
+
+
+{% block content %}
+
+<header class="masthead" style="background-image: url({{post.header_image.url}})">  <!--底圖，綁 post.header_image-->
+       <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1> {{object.title}} </h1> <!--標題-->
+                    <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -副標題-->
+                    <span class="meta">
+                        Posted by
+                        <a href="#!">{{post.author}}</a>
+                        {{post.created_at}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <!--<h1>{% block title %} {{object.title}} {% endblock title%}</h1> -->
+                <!-- <p class="text-muted">{{post.author}} | {{post.created_at}}</p>  -->
+                <p class="card-text">{{object.content | convert_markdown | safe}}</p>
+                
+
+                <p>
+                Placeholder text by
+                <a href="http://spaceipsum.com/">Space Ipsum</a>
+                &middot; Images by
+                <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock %}
+
+
+
